@@ -256,23 +256,29 @@ class _AvatarPicker extends StatelessWidget {
         final isSelected = key == selected;
         return GestureDetector(
           onTap: () => onSelect(key),
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 150),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: isSelected
-                    ? Theme.of(context).colorScheme.primary
-                    : Colors.transparent,
-                width: 3,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              AnimalAvatar(
+                avatarKey: key,
+                name: key,
+                size: 56,
+                showName: false,
               ),
-            ),
-            child: AnimalAvatar(
-              avatarKey: key,
-              name: key,
-              size: 56,
-              showName: false,
-            ),
+              if (isSelected)
+                Positioned.fill(
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 150),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.primary,
+                        width: 3,
+                      ),
+                    ),
+                  ),
+                ),
+            ],
           ),
         );
       }).toList(),

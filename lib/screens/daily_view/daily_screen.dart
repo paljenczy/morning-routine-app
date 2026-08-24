@@ -186,6 +186,14 @@ class ActivityCell extends ConsumerWidget {
                         size: 28),
               ),
               const SizedBox(width: 10),
+              Icon(
+                resolveActivityIcon(activity),
+                size: 22,
+                color: isCompleted
+                    ? const Color(0xFF4CAF50)
+                    : Colors.grey.shade500,
+              ),
+              const SizedBox(width: 8),
               Expanded(
                 child: Text(
                   resolveActivityLabel(activity, l10n),
