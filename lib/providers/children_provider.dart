@@ -11,7 +11,28 @@ class ChildrenNotifier extends StateNotifier<List<Child>> {
   final Ref _ref;
 
   ChildrenNotifier(this._box, this._ref)
-      : super(_sortedChildren(_box.values.toList()));
+      : super(_sortedChildren(_box.values.toList())) {
+    if (_box.isEmpty) {
+      _seedDefaults();
+    }
+  }
+
+  void _seedDefaults() {
+    const defaults = [
+      ('Domi', 'fox'),
+      ('Johanna', 'rabbit'),
+    ];
+    for (final (i, (name, avatar)) in defaults.indexed) {
+      final child = Child(
+        id: _uuid.v4(),
+        name: name,
+        avatarKey: avatar,
+        sortOrder: i,
+      );
+      _box.put(child.id, child);
+    }
+    state = _sortedChildren(_box.values.toList());
+  }
 
   static List<Child> _sortedChildren(List<Child> children) {
     final sorted = List<Child>.from(children);
