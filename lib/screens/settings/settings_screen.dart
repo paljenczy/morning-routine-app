@@ -310,6 +310,7 @@ class _ActivitiesTabState extends ConsumerState<_ActivitiesTab> {
           child: ReorderableListView.builder(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
             itemCount: activities.length,
+            // ignore: deprecated_member_use
             onReorder: (oldIndex, newIndex) {
               if (newIndex > oldIndex) newIndex--;
               ref
