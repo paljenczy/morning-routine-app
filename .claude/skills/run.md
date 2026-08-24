@@ -15,6 +15,7 @@ allowed-tools: Bash(pkill *), Bash(flutter *), Bash(bash *), Bash(chmod *)
 pkill -f "flutter_tools.snapshot" 2>/dev/null
 pkill -f "flutter run" 2>/dev/null
 pkill -f "dart.*build_runner" 2>/dev/null
+lsof -ti tcp:9222 | xargs kill -9 2>/dev/null || true
 find /Users/I525520/my-repos/morning_routine_app -name "*.lock" -path "*/.dart_tool/*" -delete 2>/dev/null
 true
 ```
@@ -37,9 +38,21 @@ Typical startup: **20–40 seconds** cold, **3–5 seconds** hot reload.
 
 ## Step 3: Connect Chrome DevTools MCP
 
-1. Call `list_pages` to find the app tab.
-2. Call `select_page` on it.
-3. If not found, wait 10 seconds and retry (up to 3 times).
+Flutter opens Chrome with its own random debug port. Find it:
+
+```bash
+ps aux | grep "Chrome Helper (Renderer)" | grep "remote-debugging-port" | grep -v grep | grep -oE "remote-debugging-port=[0-9]+" | head -1
+```
+
+Then get the app page URL from that port:
+
+```bash
+curl -s http://localhost:PORT/json | python3 -c "import sys,json; [print(p.get('url','')) for p in json.load(sys.stdin) if 'localhost' in p.get('url','')]"
+```
+
+Then open it in DevTools MCP:
+1. `new_page` with the app URL
+2. `select_page` on it if not already selected
 
 ## Step 4: Verify App Rendered
 

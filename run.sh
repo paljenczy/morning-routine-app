@@ -73,4 +73,11 @@ echo "  q  — Quit"
 echo ""
 
 cd "$SCRIPT_DIR"
+if [[ "$DEVICE" == "chrome" ]]; then
+  # Kill any Chrome instance already holding port 9222
+  lsof -ti tcp:9222 | xargs kill -9 2>/dev/null || true
+  sleep 1
+  # Use a wrapper that injects --remote-debugging-port=9222 so DevTools MCP can attach
+  export CHROME_EXECUTABLE="$SCRIPT_DIR/tools/chrome-debug.sh"
+fi
 flutter run -d "$DEVICE" "${EXTRA_ARGS[@]+"${EXTRA_ARGS[@]}"}"
