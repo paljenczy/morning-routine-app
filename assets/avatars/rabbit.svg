@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Rabbit -->
+  <!-- Ears -->
+  <ellipse cx="35" cy="22" rx="9" ry="22" fill="#F8BBD0"/>
+  <ellipse cx="65" cy="22" rx="9" ry="22" fill="#F8BBD0"/>
+  <ellipse cx="35" cy="22" rx="5" ry="17" fill="#F48FB1"/>
+  <ellipse cx="65" cy="22" rx="5" ry="17" fill="#F48FB1"/>
+  <!-- Face -->
+  <ellipse cx="50" cy="62" rx="28" ry="26" fill="#F8BBD0"/>
+  <!-- Eyes -->
+  <ellipse cx="39" cy="56" rx="5" ry="5.5" fill="#212121"/>
+  <ellipse cx="61" cy="56" rx="5" ry="5.5" fill="#212121"/>
+  <circle cx="41" cy="54" r="1.5" fill="white"/>
+  <circle cx="63" cy="54" r="1.5" fill="white"/>
+  <!-- Nose -->
+  <ellipse cx="50" cy="67" rx="3" ry="2" fill="#E91E63"/>
+  <!-- Mouth -->
+  <path d="M47,69 Q50,73 53,69" stroke="#212121" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Cheeks -->
+  <ellipse cx="33" cy="65" rx="7" ry="5" fill="#F48FB1" opacity="0.5"/>
+  <ellipse cx="67" cy="65" rx="7" ry="5" fill="#F48FB1" opacity="0.5"/>
+</svg>

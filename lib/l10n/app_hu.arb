@@ -1,0 +1,42 @@
+{
+  "@@locale": "hu",
+  "appTitle": "Reggeli Rutin",
+  "navWeekly": "Heti áttekintés",
+  "navSettings": "Beállítások",
+  "dailyViewTitle": "Ma",
+  "weeklyViewTitle": "Heti áttekintés",
+  "settingsTitle": "Beállítások",
+  "tabChildren": "Gyerekek",
+  "tabActivities": "Feladatok",
+  "addChild": "Gyerek hozzáadása",
+  "childName": "Gyerek neve",
+  "maxChildrenReached": "Maximum 5 gyerek adható hozzá",
+  "addActivity": "Feladat hozzáadása",
+  "activityLabel": "Feladat neve",
+  "activity_toilet": "WC-re menetel",
+  "activity_dressing": "Felöltözés",
+  "activity_breakfast": "Reggeli evés",
+  "activity_teeth": "Fogmosás",
+  "activity_bag": "Táska ellenőrzése",
+  "weekDay_1": "H",
+  "weekDay_2": "K",
+  "weekDay_3": "Sze",
+  "weekDay_4": "Cs",
+  "weekDay_5": "P",
+  "languageLabel": "Nyelv",
+  "deleteConfirm": "Törlés?",
+  "cancel": "Mégse",
+  "confirm": "Megerősít",
+  "noChildren": "Még nincs gyerek. Adj hozzá egyet a beállításokban.",
+  "noActivities": "Nincsenek feladatok beállítva.",
+  "deleteChildConfirm": "Eltávolítja: {name}?",
+  "@deleteChildConfirm": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "deleteActivityConfirm": "Eltávolítja ezt a feladatot?",
+  "weeklyStarHint": "Teljesítsd az összes 5 hétköznapet a heti csillagért!",
+  "settingsLanguageHu": "Magyar",
+  "settingsLanguageEn": "English"
+}

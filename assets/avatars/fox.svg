@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Fox -->
+  <!-- Ears -->
+  <polygon points="20,40 10,10 38,30" fill="#E65100"/>
+  <polygon points="80,40 90,10 62,30" fill="#E65100"/>
+  <polygon points="22,38 15,18 36,32" fill="#FF8F00"/>
+  <polygon points="78,38 85,18 64,32" fill="#FF8F00"/>
+  <!-- Face -->
+  <ellipse cx="50" cy="58" rx="30" ry="28" fill="#FF8F00"/>
+  <!-- White muzzle -->
+  <ellipse cx="50" cy="68" rx="16" ry="12" fill="#FFF8E1"/>
+  <!-- Eyes -->
+  <ellipse cx="39" cy="52" rx="5" ry="5.5" fill="#212121"/>
+  <ellipse cx="61" cy="52" rx="5" ry="5.5" fill="#212121"/>
+  <circle cx="41" cy="50" r="1.5" fill="white"/>
+  <circle cx="63" cy="50" r="1.5" fill="white"/>
+  <!-- Nose -->
+  <ellipse cx="50" cy="64" rx="3" ry="2" fill="#212121"/>
+  <!-- Mouth -->
+  <path d="M46,67 Q50,71 54,67" stroke="#212121" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Cheek tufts -->
+  <ellipse cx="30" cy="63" rx="6" ry="4" fill="#E65100" opacity="0.5"/>
+  <ellipse cx="70" cy="63" rx="6" ry="4" fill="#E65100" opacity="0.5"/>
+</svg>

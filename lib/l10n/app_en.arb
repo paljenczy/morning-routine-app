@@ -1,0 +1,42 @@
+{
+  "@@locale": "en",
+  "appTitle": "Morning Routine",
+  "navWeekly": "Weekly",
+  "navSettings": "Settings",
+  "dailyViewTitle": "Today",
+  "weeklyViewTitle": "Weekly Overview",
+  "settingsTitle": "Settings",
+  "tabChildren": "Children",
+  "tabActivities": "Activities",
+  "addChild": "Add Child",
+  "childName": "Child's name",
+  "maxChildrenReached": "Maximum 5 children",
+  "addActivity": "Add Activity",
+  "activityLabel": "Activity name",
+  "activity_toilet": "Going to the toilet",
+  "activity_dressing": "Dressing up",
+  "activity_breakfast": "Eating breakfast",
+  "activity_teeth": "Wash teeth",
+  "activity_bag": "Check bag",
+  "weekDay_1": "Mon",
+  "weekDay_2": "Tue",
+  "weekDay_3": "Wed",
+  "weekDay_4": "Thu",
+  "weekDay_5": "Fri",
+  "languageLabel": "Language",
+  "deleteConfirm": "Delete?",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "noChildren": "No children yet. Add one in Settings.",
+  "noActivities": "No activities configured.",
+  "deleteChildConfirm": "Remove {name}?",
+  "@deleteChildConfirm": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "deleteActivityConfirm": "Remove this activity?",
+  "weeklyStarHint": "Complete all 5 weekdays to earn the weekly star!",
+  "settingsLanguageHu": "Magyar",
+  "settingsLanguageEn": "English"
+}
