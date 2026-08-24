@@ -54,19 +54,19 @@ class AppLocalizationsHu extends AppLocalizations {
   String get selectIcon => 'Ikon kiválasztása';
 
   @override
-  String get activity_toilet => 'WC-re menetel';
+  String get activity_toilet => 'WC';
 
   @override
-  String get activity_dressing => 'Felöltözés';
+  String get activity_dressing => 'Öltözés';
 
   @override
-  String get activity_breakfast => 'Reggeli evés';
+  String get activity_breakfast => 'Reggeli';
 
   @override
   String get activity_teeth => 'Fogmosás';
 
   @override
-  String get activity_bag => 'Táska ellenőrzése';
+  String get activity_bag => 'Táska';
 
   @override
   String get weekDay_1 => 'H';

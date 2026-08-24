@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import '../models/activity.dart';
 import '../l10n/app_localizations.dart';
 
-// Selectable icons for custom activities — key → IconData
 const Map<String, IconData> activityIconOptions = {
   // Hygiene & morning
   'wc':                  Icons.wc,
   'sanitizer':           Icons.sanitizer,
+  'clean_hands':         Icons.clean_hands,
   'wash':                Icons.wash,
   'brush':               Icons.brush,
   'bathtub':             Icons.bathtub,
@@ -84,7 +84,7 @@ IconData resolveActivityIcon(Activity activity) {
     'activity_toilet'    => Icons.wc,
     'activity_dressing'  => Icons.checkroom,
     'activity_breakfast' => Icons.free_breakfast,
-    'activity_teeth'     => Icons.sanitizer,
+    'activity_teeth'     => Icons.clean_hands,
     'activity_bag'       => Icons.backpack,
     _                    => Icons.task_alt,
   };
