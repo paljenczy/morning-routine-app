@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Unicorn -->
+  <!-- Horn -->
+  <polygon points="50,2 44,28 56,28" fill="#CE93D8"/>
+  <line x1="50" y1="4" x2="47" y2="26" stroke="#BA68C8" stroke-width="1.5"/>
+  <line x1="50" y1="4" x2="53" y2="26" stroke="#BA68C8" stroke-width="1.5"/>
+  <!-- Ears -->
+  <polygon points="24,38 18,14 38,32" fill="#F8BBD0"/>
+  <polygon points="76,38 82,14 62,32" fill="#F8BBD0"/>
+  <polygon points="26,36 22,20 36,33" fill="#F48FB1"/>
+  <polygon points="74,36 78,20 64,33" fill="#F48FB1"/>
+  <!-- Mane streak -->
+  <ellipse cx="20" cy="50" rx="8" ry="18" fill="#CE93D8" transform="rotate(-15 20 50)"/>
+  <!-- Face -->
+  <ellipse cx="50" cy="58" rx="28" ry="26" fill="#FCE4EC"/>
+  <!-- Muzzle -->
+  <ellipse cx="50" cy="69" rx="14" ry="9" fill="#F8BBD0"/>
+  <!-- Eyes -->
+  <ellipse cx="39" cy="52" rx="5.5" ry="6" fill="#212121"/>
+  <ellipse cx="61" cy="52" rx="5.5" ry="6" fill="#212121"/>
+  <!-- Star shine in eyes -->
+  <circle cx="41" cy="50" r="2" fill="white"/>
+  <circle cx="63" cy="50" r="2" fill="white"/>
+  <!-- Nose -->
+  <ellipse cx="50" cy="65" rx="3" ry="2" fill="#E91E63"/>
+  <!-- Mouth -->
+  <path d="M46,68 Q50,72 54,68" stroke="#212121" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Rainbow freckles -->
+  <circle cx="33" cy="64" r="2.5" fill="#FF8A65" opacity="0.7"/>
+  <circle cx="38" cy="67" r="2" fill="#FFD54F" opacity="0.7"/>
+  <circle cx="62" cy="64" r="2.5" fill="#80DEEA" opacity="0.7"/>
+  <circle cx="67" cy="67" r="2" fill="#CE93D8" opacity="0.7"/>
+</svg>

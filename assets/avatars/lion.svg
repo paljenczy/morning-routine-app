@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Lion -->
+  <!-- Mane -->
+  <circle cx="50" cy="55" r="34" fill="#F9A825"/>
+  <!-- Ear tufts inside mane -->
+  <ellipse cx="28" cy="30" rx="8" ry="10" fill="#F57F17"/>
+  <ellipse cx="72" cy="30" rx="8" ry="10" fill="#F57F17"/>
+  <!-- Face -->
+  <circle cx="50" cy="56" r="24" fill="#FFD54F"/>
+  <!-- Muzzle -->
+  <ellipse cx="50" cy="68" rx="13" ry="9" fill="#FFE082"/>
+  <!-- Eyes -->
+  <ellipse cx="40" cy="50" rx="5" ry="5.5" fill="#212121"/>
+  <ellipse cx="60" cy="50" rx="5" ry="5.5" fill="#212121"/>
+  <circle cx="42" cy="48" r="1.5" fill="white"/>
+  <circle cx="62" cy="48" r="1.5" fill="white"/>
+  <!-- Nose -->
+  <ellipse cx="50" cy="63" rx="4" ry="3" fill="#E91E63"/>
+  <!-- Mouth -->
+  <path d="M46,66 Q50,70 54,66" stroke="#212121" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Cheeks -->
+  <ellipse cx="34" cy="62" rx="7" ry="5" fill="#FFCC80" opacity="0.6"/>
+  <ellipse cx="66" cy="62" rx="7" ry="5" fill="#FFCC80" opacity="0.6"/>
+</svg>

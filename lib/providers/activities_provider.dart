@@ -48,12 +48,13 @@ class ActivitiesNotifier extends StateNotifier<List<Activity>> {
     }
   }
 
-  void add(String label) {
+  void add(String label, {String? iconKey}) {
     final activity = Activity(
       id: _uuid.v4(),
       labelKey: label,
       isCustom: true,
       sortOrder: state.length,
+      iconKey: iconKey,
     );
     _box.put(activity.id, activity);
     state = [...state, activity];

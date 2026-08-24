@@ -33,6 +33,9 @@ class AppLocalizationsHu extends AppLocalizations {
   String get tabActivities => 'Feladatok';
 
   @override
+  String get tabGeneral => 'Általános';
+
+  @override
   String get addChild => 'Gyerek hozzáadása';
 
   @override
@@ -46,6 +49,9 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get activityLabel => 'Feladat neve';
+
+  @override
+  String get selectIcon => 'Ikon kiválasztása';
 
   @override
   String get activity_toilet => 'WC-re menetel';

@@ -21,13 +21,14 @@ class ActivityAdapter extends TypeAdapter<Activity> {
       labelKey: fields[1] as String,
       isCustom: fields[2] as bool,
       sortOrder: fields[3] as int,
+      iconKey: fields[4] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Activity obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -35,7 +36,9 @@ class ActivityAdapter extends TypeAdapter<Activity> {
       ..writeByte(2)
       ..write(obj.isCustom)
       ..writeByte(3)
-      ..write(obj.sortOrder);
+      ..write(obj.sortOrder)
+      ..writeByte(4)
+      ..write(obj.iconKey);
   }
 
   @override

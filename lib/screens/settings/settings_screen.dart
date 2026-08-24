@@ -9,7 +9,10 @@ import '../../providers/settings_provider.dart';
 import '../../widgets/animal_avatar.dart';
 import '../../utils/activity_label.dart';
 
-const _avatarKeys = ['fox', 'rabbit', 'bear', 'cat', 'dog', 'owl'];
+const _avatarKeys = [
+  'fox', 'rabbit', 'bear', 'cat', 'dog', 'owl',
+  'lion', 'penguin', 'elephant', 'frog', 'panda', 'unicorn',
+];
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -17,10 +20,9 @@ class SettingsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
-    final settings = ref.watch(settingsProvider);
 
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           title: Text(l10n.settingsTitle),
@@ -29,42 +31,60 @@ class SettingsScreen extends ConsumerWidget {
             tabs: [
               Tab(text: l10n.tabChildren),
               Tab(text: l10n.tabActivities),
+              Tab(text: l10n.tabGeneral),
             ],
           ),
-          actions: [
-            // Language toggle
-            Padding(
-              padding: const EdgeInsets.only(right: 12),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(l10n.languageLabel,
-                      style: Theme.of(context).textTheme.bodyMedium),
-                  const SizedBox(width: 8),
-                  SegmentedButton<String>(
-                    segments: const [
-                      ButtonSegment(value: 'hu', label: Text('HU')),
-                      ButtonSegment(value: 'en', label: Text('EN')),
-                    ],
-                    selected: {settings.locale.languageCode},
-                    onSelectionChanged: (Set<String> sel) {
-                      ref.read(settingsProvider.notifier).setLocale(sel.first);
-                    },
-                    style: const ButtonStyle(
-                        visualDensity: VisualDensity.compact),
-                  ),
-                ],
-              ),
-            ),
-          ],
         ),
         body: TabBarView(
           children: [
             const _ChildrenTab(),
             const _ActivitiesTab(),
+            const _GeneralTab(),
           ],
         ),
       ),
+    );
+  }
+}
+
+// ─── General tab ─────────────────────────────────────────────────────────────
+
+class _GeneralTab extends ConsumerWidget {
+  const _GeneralTab();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+    final settings = ref.watch(settingsProvider);
+
+    return ListView(
+      padding: const EdgeInsets.all(24),
+      children: [
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            child: Row(
+              children: [
+                Icon(Icons.language,
+                    color: Theme.of(context).colorScheme.primary),
+                const SizedBox(width: 16),
+                Text(l10n.languageLabel,
+                    style: Theme.of(context).textTheme.titleMedium),
+                const Spacer(),
+                SegmentedButton<String>(
+                  segments: const [
+                    ButtonSegment(value: 'hu', label: Text('Magyar')),
+                    ButtonSegment(value: 'en', label: Text('English')),
+                  ],
+                  selected: {settings.locale.languageCode},
+                  onSelectionChanged: (sel) =>
+                      ref.read(settingsProvider.notifier).setLocale(sel.first),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -120,7 +140,6 @@ class _ChildrenTab extends ConsumerWidget {
 
 class _ChildCard extends ConsumerWidget {
   final Child child;
-
   const _ChildCard({required this.child});
 
   @override
@@ -170,7 +189,6 @@ class _ChildCard extends ConsumerWidget {
 
 class _AddChildDialog extends StatefulWidget {
   final WidgetRef ref;
-
   const _AddChildDialog({required this.ref});
 
   @override
@@ -225,9 +243,7 @@ class _AddChildDialogState extends State<_AddChildDialog> {
           onPressed: () {
             final name = _nameController.text.trim();
             if (name.isNotEmpty) {
-              widget.ref
-                  .read(childrenProvider.notifier)
-                  .add(name, _selectedAvatar);
+              widget.ref.read(childrenProvider.notifier).add(name, _selectedAvatar);
               Navigator.pop(context);
             }
           },
@@ -241,13 +257,12 @@ class _AddChildDialogState extends State<_AddChildDialog> {
 class _AvatarPicker extends StatelessWidget {
   final String selected;
   final ValueChanged<String> onSelect;
-
   const _AvatarPicker({required this.selected, required this.onSelect});
 
   @override
   Widget build(BuildContext context) {
     return GridView.count(
-      crossAxisCount: 3,
+      crossAxisCount: 4,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       mainAxisSpacing: 8,
@@ -259,12 +274,7 @@ class _AvatarPicker extends StatelessWidget {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              AnimalAvatar(
-                avatarKey: key,
-                name: key,
-                size: 56,
-                showName: false,
-              ),
+              AnimalAvatar(avatarKey: key, name: key, size: 56, showName: false),
               if (isSelected)
                 Positioned.fill(
                   child: AnimatedContainer(
@@ -288,108 +298,178 @@ class _AvatarPicker extends StatelessWidget {
 
 // ─── Activities tab ───────────────────────────────────────────────────────────
 
-class _ActivitiesTab extends ConsumerStatefulWidget {
+class _ActivitiesTab extends ConsumerWidget {
   const _ActivitiesTab();
 
   @override
-  ConsumerState<_ActivitiesTab> createState() => _ActivitiesTabState();
-}
-
-class _ActivitiesTabState extends ConsumerState<_ActivitiesTab> {
-  final _newActivityController = TextEditingController();
-  bool _showAddField = false;
-
-  @override
-  void dispose() {
-    _newActivityController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     final activities = ref.watch(activitiesProvider);
 
-    return Column(
+    return Stack(
       children: [
-        Expanded(
-          child: ReorderableListView.builder(
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-            itemCount: activities.length,
-            // ignore: deprecated_member_use
-            onReorder: (oldIndex, newIndex) {
-              if (newIndex > oldIndex) newIndex--;
-              ref
-                  .read(activitiesProvider.notifier)
-                  .reorder(oldIndex, newIndex);
-            },
-            itemBuilder: (context, index) {
-              final activity = activities[index];
-              return _ActivityTile(
-                key: ValueKey(activity.id),
-                activity: activity,
-              );
-            },
-          ),
+        ReorderableListView.builder(
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 80),
+          itemCount: activities.length,
+          // ignore: deprecated_member_use
+          onReorder: (oldIndex, newIndex) {
+            if (newIndex > oldIndex) newIndex--;
+            ref.read(activitiesProvider.notifier).reorder(oldIndex, newIndex);
+          },
+          itemBuilder: (context, index) {
+            final activity = activities[index];
+            return _ActivityTile(key: ValueKey(activity.id), activity: activity);
+          },
         ),
-        if (_showAddField)
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: _newActivityController,
-                    autofocus: true,
-                    decoration: InputDecoration(
-                      labelText: l10n.activityLabel,
-                      border: const OutlineInputBorder(),
-                    ),
-                    onSubmitted: (_) => _addActivity(),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                FilledButton(
-                    onPressed: _addActivity, child: Text(l10n.confirm)),
-                const SizedBox(width: 4),
-                TextButton(
-                    onPressed: () =>
-                        setState(() => _showAddField = false),
-                    child: Text(l10n.cancel)),
-              ],
-            ),
-          ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-          child: SizedBox(
-            width: double.infinity,
-            child: OutlinedButton.icon(
-              icon: const Icon(Icons.add),
-              label: Text(l10n.addActivity),
-              onPressed: () => setState(() {
-                _showAddField = true;
-                _newActivityController.clear();
-              }),
-            ),
+        Positioned(
+          bottom: 16,
+          right: 16,
+          child: FloatingActionButton.extended(
+            heroTag: 'add_activity',
+            onPressed: () => _showAddActivityDialog(context, ref),
+            icon: const Icon(Icons.add),
+            label: Text(l10n.addActivity),
           ),
         ),
       ],
     );
   }
 
-  void _addActivity() {
-    final label = _newActivityController.text.trim();
-    if (label.isNotEmpty) {
-      ref.read(activitiesProvider.notifier).add(label);
-      _newActivityController.clear();
-      setState(() => _showAddField = false);
-    }
+  Future<void> _showAddActivityDialog(BuildContext context, WidgetRef ref) async {
+    await showDialog(
+      context: context,
+      builder: (_) => _AddActivityDialog(ref: ref),
+    );
+  }
+}
+
+class _AddActivityDialog extends StatefulWidget {
+  final WidgetRef ref;
+  const _AddActivityDialog({required this.ref});
+
+  @override
+  State<_AddActivityDialog> createState() => _AddActivityDialogState();
+}
+
+class _AddActivityDialogState extends State<_AddActivityDialog> {
+  final _labelController = TextEditingController();
+  String _selectedIconKey = 'task_alt';
+
+  @override
+  void dispose() {
+    _labelController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
+    return AlertDialog(
+      title: Text(l10n.addActivity),
+      content: SizedBox(
+        width: 480,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextField(
+                controller: _labelController,
+                decoration: InputDecoration(
+                  labelText: l10n.activityLabel,
+                  border: const OutlineInputBorder(),
+                ),
+                textCapitalization: TextCapitalization.sentences,
+                autofocus: true,
+              ),
+              const SizedBox(height: 16),
+              Text(l10n.selectIcon,
+                  style: Theme.of(context).textTheme.labelLarge),
+              const SizedBox(height: 8),
+              _IconPicker(
+                selected: _selectedIconKey,
+                onSelect: (key) => setState(() => _selectedIconKey = key),
+              ),
+            ],
+          ),
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: Text(l10n.cancel),
+        ),
+        FilledButton(
+          onPressed: () {
+            final label = _labelController.text.trim();
+            if (label.isNotEmpty) {
+              widget.ref
+                  .read(activitiesProvider.notifier)
+                  .add(label, iconKey: _selectedIconKey);
+              Navigator.pop(context);
+            }
+          },
+          child: Text(l10n.confirm),
+        ),
+      ],
+    );
+  }
+}
+
+class _IconPicker extends StatelessWidget {
+  final String selected;
+  final ValueChanged<String> onSelect;
+  const _IconPicker({required this.selected, required this.onSelect});
+
+  @override
+  Widget build(BuildContext context) {
+    final entries = activityIconOptions.entries.toList();
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 9,
+        mainAxisSpacing: 6,
+        crossAxisSpacing: 6,
+      ),
+      itemCount: entries.length,
+      itemBuilder: (context, index) {
+        final key = entries[index].key;
+        final icon = entries[index].value;
+        final isSelected = key == selected;
+        return GestureDetector(
+          onTap: () => onSelect(key),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 150),
+            decoration: BoxDecoration(
+              color: isSelected
+                  ? Theme.of(context).colorScheme.primaryContainer
+                  : Colors.grey.shade100,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: isSelected
+                    ? Theme.of(context).colorScheme.primary
+                    : Colors.transparent,
+                width: 2,
+              ),
+            ),
+            child: Icon(
+              icon,
+              size: 28,
+              color: isSelected
+                  ? Theme.of(context).colorScheme.primary
+                  : Colors.grey.shade600,
+            ),
+          ),
+        );
+      },
+    );
   }
 }
 
 class _ActivityTile extends ConsumerWidget {
   final Activity activity;
-
   const _ActivityTile({super.key, required this.activity});
 
   @override
@@ -400,6 +480,10 @@ class _ActivityTile extends ConsumerWidget {
       child: ListTile(
         leading: const Icon(Icons.drag_handle, color: Colors.grey),
         title: Text(resolveActivityLabel(activity, l10n)),
+        subtitle: activity.isCustom
+            ? Icon(resolveActivityIcon(activity),
+                size: 18, color: Colors.grey.shade500)
+            : null,
         trailing: IconButton(
           icon: const Icon(Icons.delete_outline, color: Colors.redAccent),
           onPressed: () async {

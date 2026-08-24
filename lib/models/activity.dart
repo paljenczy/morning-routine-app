@@ -16,10 +16,14 @@ class Activity extends HiveObject {
   @HiveField(3)
   int sortOrder;
 
+  @HiveField(4)
+  String? iconKey;
+
   Activity({
     required this.id,
     required this.labelKey,
     required this.isCustom,
     required this.sortOrder,
+    this.iconKey,
   });
 }

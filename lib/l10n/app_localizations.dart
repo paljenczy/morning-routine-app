@@ -146,6 +146,12 @@ abstract class AppLocalizations {
   /// **'Activities'**
   String get tabActivities;
 
+  /// No description provided for @tabGeneral.
+  ///
+  /// In en, this message translates to:
+  /// **'General'**
+  String get tabGeneral;
+
   /// No description provided for @addChild.
   ///
   /// In en, this message translates to:
@@ -175,6 +181,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Activity name'**
   String get activityLabel;
+
+  /// No description provided for @selectIcon.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose icon'**
+  String get selectIcon;
 
   /// No description provided for @activity_toilet.
   ///

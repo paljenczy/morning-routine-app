@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 const Map<String, Color> _avatarColors = {
-  'fox': Color(0xFFFFE0B2),
-  'rabbit': Color(0xFFFCE4EC),
-  'bear': Color(0xFFD7CCC8),
-  'cat': Color(0xFFFFCCBC),
-  'dog': Color(0xFFEFEBE9),
-  'owl': Color(0xFFF3E5F5),
+  'fox':      Color(0xFFFFE0B2),
+  'rabbit':   Color(0xFFFCE4EC),
+  'bear':     Color(0xFFD7CCC8),
+  'cat':      Color(0xFFFFCCBC),
+  'dog':      Color(0xFFEFEBE9),
+  'owl':      Color(0xFFF3E5F5),
+  'lion':     Color(0xFFFFF9C4),
+  'penguin':  Color(0xFFE3F2FD),
+  'elephant': Color(0xFFECEFF1),
+  'frog':     Color(0xFFE8F5E9),
+  'panda':    Color(0xFFFAFAFA),
+  'unicorn':  Color(0xFFFCE4EC),
 };
 
 class AnimalAvatar extends StatelessWidget {

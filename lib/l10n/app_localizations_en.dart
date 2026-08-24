@@ -33,6 +33,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tabActivities => 'Activities';
 
   @override
+  String get tabGeneral => 'General';
+
+  @override
   String get addChild => 'Add Child';
 
   @override
@@ -46,6 +49,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get activityLabel => 'Activity name';
+
+  @override
+  String get selectIcon => 'Choose icon';
 
   @override
   String get activity_toilet => 'Going to the toilet';

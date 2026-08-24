@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Panda -->
+  <!-- Ears -->
+  <circle cx="26" cy="24" r="14" fill="#212121"/>
+  <circle cx="74" cy="24" r="14" fill="#212121"/>
+  <!-- Face -->
+  <circle cx="50" cy="58" r="30" fill="#F5F5F5"/>
+  <!-- Eye patches -->
+  <ellipse cx="37" cy="50" rx="11" ry="10" fill="#212121"/>
+  <ellipse cx="63" cy="50" rx="11" ry="10" fill="#212121"/>
+  <!-- Eyes -->
+  <circle cx="37" cy="50" r="6" fill="white"/>
+  <circle cx="63" cy="50" r="6" fill="white"/>
+  <circle cx="37" cy="50" r="4" fill="#212121"/>
+  <circle cx="63" cy="50" r="4" fill="#212121"/>
+  <circle cx="38.5" cy="48.5" r="1.5" fill="white"/>
+  <circle cx="64.5" cy="48.5" r="1.5" fill="white"/>
+  <!-- Muzzle -->
+  <ellipse cx="50" cy="68" rx="14" ry="10" fill="#EEEEEE"/>
+  <!-- Nose -->
+  <ellipse cx="50" cy="63" rx="4" ry="3" fill="#212121"/>
+  <!-- Mouth -->
+  <path d="M46,68 Q50,73 54,68" stroke="#212121" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Cheeks -->
+  <ellipse cx="30" cy="66" rx="7" ry="5" fill="#FFCDD2" opacity="0.6"/>
+  <ellipse cx="70" cy="66" rx="7" ry="5" fill="#FFCDD2" opacity="0.6"/>
+</svg>
