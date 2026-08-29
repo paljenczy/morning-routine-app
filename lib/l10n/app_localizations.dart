@@ -248,6 +248,18 @@ abstract class AppLocalizations {
   /// **'Fri'**
   String get weekDay_5;
 
+  /// No description provided for @weekDay_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Sat'**
+  String get weekDay_6;
+
+  /// No description provided for @weekDay_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Sun'**
+  String get weekDay_7;
+
   /// No description provided for @languageLabel.
   ///
   /// In en, this message translates to:
@@ -296,10 +308,16 @@ abstract class AppLocalizations {
   /// **'Remove this activity?'**
   String get deleteActivityConfirm;
 
+  /// No description provided for @editAvatar.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Avatar'**
+  String get editAvatar;
+
   /// No description provided for @weeklyStarHint.
   ///
   /// In en, this message translates to:
-  /// **'Complete all 5 weekdays to earn the weekly star!'**
+  /// **'Complete all 7 days to earn the super star!'**
   String get weeklyStarHint;
 
   /// No description provided for @settingsLanguageHu.

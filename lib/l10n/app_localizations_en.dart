@@ -84,6 +84,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get weekDay_5 => 'Fri';
 
   @override
+  String get weekDay_6 => 'Sat';
+
+  @override
+  String get weekDay_7 => 'Sun';
+
+  @override
   String get languageLabel => 'Language';
 
   @override
@@ -110,8 +116,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get deleteActivityConfirm => 'Remove this activity?';
 
   @override
-  String get weeklyStarHint =>
-      'Complete all 5 weekdays to earn the weekly star!';
+  String get editAvatar => 'Change Avatar';
+
+  @override
+  String get weeklyStarHint => 'Complete all 7 days to earn the super star!';
 
   @override
   String get settingsLanguageHu => 'Magyar';

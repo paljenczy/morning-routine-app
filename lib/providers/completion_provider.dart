@@ -107,16 +107,29 @@ final isChildCompleteProvider =
   return count >= activities.length;
 });
 
-// childId -> bool: all Mon–Fri of current ISO week are complete
-final weeklyStarProvider = Provider.family<bool, String>((ref, childId) {
+// childId -> WeeklyStar: weekdays done = weekStar, all 7 days done = superStar
+enum WeeklyStar { none, weekStar, superStar }
+
+final weeklyStarProvider = Provider.family<WeeklyStar, String>((ref, childId) {
   final now = DateTime.now();
   final monday = DateTime(now.year, now.month, now.day - (now.weekday - 1));
+
+  // Check Mon–Fri
+  bool weekdaysDone = true;
   for (int i = 0; i < 5; i++) {
-    final day = monday.add(Duration(days: i));
-    final dateKey = _dateFormat.format(day);
-    final complete = ref.watch(
-        isChildCompleteProvider((childId: childId, date: dateKey)));
-    if (!complete) return false;
+    final dateKey = _dateFormat.format(monday.add(Duration(days: i)));
+    if (!ref.watch(isChildCompleteProvider((childId: childId, date: dateKey)))) {
+      weekdaysDone = false;
+      break;
+    }
   }
-  return true;
+  if (!weekdaysDone) return WeeklyStar.none;
+
+  // Check Sat + Sun
+  final satKey = _dateFormat.format(monday.add(const Duration(days: 5)));
+  final sunKey = _dateFormat.format(monday.add(const Duration(days: 6)));
+  final satDone = ref.watch(isChildCompleteProvider((childId: childId, date: satKey)));
+  final sunDone = ref.watch(isChildCompleteProvider((childId: childId, date: sunKey)));
+
+  return (satDone && sunDone) ? WeeklyStar.superStar : WeeklyStar.weekStar;
 });

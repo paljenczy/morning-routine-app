@@ -45,7 +45,7 @@ class ChildWeekCard extends ConsumerWidget {
     final now = DateTime.now();
     final monday =
         DateTime(now.year, now.month, now.day - (now.weekday - 1));
-    return List.generate(5, (i) => monday.add(Duration(days: i)));
+    return List.generate(7, (i) => monday.add(Duration(days: i)));
   }
 
   @override
@@ -69,7 +69,7 @@ class ChildWeekCard extends ConsumerWidget {
               ),
             ),
             const SizedBox(width: 16),
-            AnimatedStar(filled: weeklyStar, size: 72),
+            AnimatedStar(weeklyStar: weeklyStar, size: 72),
           ],
         ),
       ),
@@ -99,7 +99,7 @@ class DayBadge extends ConsumerWidget {
 
     final dayNames = [
       l10n.weekDay_1, l10n.weekDay_2, l10n.weekDay_3,
-      l10n.weekDay_4, l10n.weekDay_5,
+      l10n.weekDay_4, l10n.weekDay_5, l10n.weekDay_6, l10n.weekDay_7,
     ];
     final dayName = dayNames[day.weekday - 1];
 

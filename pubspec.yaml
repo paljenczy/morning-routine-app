@@ -1,7 +1,7 @@
 name: morning_routine_app
 description: "Morning routine tracker for children"
 publish_to: 'none'
-version: 1.0.0+1
+version: 1.0.2+3
 
 environment:
   sdk: ^3.11.3

@@ -25,6 +25,8 @@
   "weekDay_3": "Sze",
   "weekDay_4": "Cs",
   "weekDay_5": "P",
+  "weekDay_6": "Szo",
+  "weekDay_7": "V",
   "languageLabel": "Nyelv",
   "deleteConfirm": "Törlés?",
   "cancel": "Mégse",
@@ -38,7 +40,8 @@
     }
   },
   "deleteActivityConfirm": "Eltávolítja ezt a feladatot?",
-  "weeklyStarHint": "Teljesítsd az összes 5 hétköznapet a heti csillagért!",
+  "editAvatar": "Avatar megváltoztatása",
+  "weeklyStarHint": "Teljesítsd mind a 7 napot a szupercsillagért!",
   "settingsLanguageHu": "Magyar",
   "settingsLanguageEn": "English"
 }

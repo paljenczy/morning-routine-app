@@ -25,6 +25,8 @@
   "weekDay_3": "Wed",
   "weekDay_4": "Thu",
   "weekDay_5": "Fri",
+  "weekDay_6": "Sat",
+  "weekDay_7": "Sun",
   "languageLabel": "Language",
   "deleteConfirm": "Delete?",
   "cancel": "Cancel",
@@ -38,7 +40,8 @@
     }
   },
   "deleteActivityConfirm": "Remove this activity?",
-  "weeklyStarHint": "Complete all 5 weekdays to earn the weekly star!",
+  "editAvatar": "Change Avatar",
+  "weeklyStarHint": "Complete all 7 days to earn the super star!",
   "settingsLanguageHu": "Magyar",
   "settingsLanguageEn": "English"
 }

@@ -51,6 +51,14 @@ class ChildrenNotifier extends StateNotifier<List<Child>> {
     state = [...state, child];
   }
 
+  void updateAvatar(String id, String avatarKey) {
+    final child = _box.get(id);
+    if (child == null) return;
+    child.avatarKey = avatarKey;
+    child.save();
+    state = _sortedChildren(_box.values.toList());
+  }
+
   void remove(String id) {
     _box.delete(id);
     _ref.read(completionProvider.notifier).purgeChild(id);

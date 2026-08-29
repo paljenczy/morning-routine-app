@@ -84,6 +84,12 @@ class AppLocalizationsHu extends AppLocalizations {
   String get weekDay_5 => 'P';
 
   @override
+  String get weekDay_6 => 'Szo';
+
+  @override
+  String get weekDay_7 => 'V';
+
+  @override
   String get languageLabel => 'Nyelv';
 
   @override
@@ -111,8 +117,10 @@ class AppLocalizationsHu extends AppLocalizations {
   String get deleteActivityConfirm => 'Eltávolítja ezt a feladatot?';
 
   @override
-  String get weeklyStarHint =>
-      'Teljesítsd az összes 5 hétköznapet a heti csillagért!';
+  String get editAvatar => 'Avatar megváltoztatása';
+
+  @override
+  String get weeklyStarHint => 'Teljesítsd mind a 7 napot a szupercsillagért!';
 
   @override
   String get settingsLanguageHu => 'Magyar';

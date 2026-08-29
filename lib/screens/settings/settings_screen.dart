@@ -149,11 +149,30 @@ class _ChildCard extends ConsumerWidget {
     return Card(
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        leading: AnimalAvatar(
-          avatarKey: child.avatarKey,
-          name: child.name,
-          size: 48,
-          showName: false,
+        leading: GestureDetector(
+          onTap: () => showDialog(
+            context: context,
+            builder: (_) => _EditAvatarDialog(ref: ref, child: child),
+          ),
+          child: Stack(
+            alignment: Alignment.bottomRight,
+            children: [
+              AnimalAvatar(
+                avatarKey: child.avatarKey,
+                name: child.name,
+                size: 48,
+                showName: false,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary,
+                  shape: BoxShape.circle,
+                ),
+                padding: const EdgeInsets.all(3),
+                child: const Icon(Icons.edit, size: 12, color: Colors.white),
+              ),
+            ],
+          ),
         ),
         title: Text(child.name,
             style: Theme.of(context)
@@ -183,6 +202,56 @@ class _ChildCard extends ConsumerWidget {
           },
         ),
       ),
+    );
+  }
+}
+
+class _EditAvatarDialog extends StatefulWidget {
+  final WidgetRef ref;
+  final Child child;
+  const _EditAvatarDialog({required this.ref, required this.child});
+
+  @override
+  State<_EditAvatarDialog> createState() => _EditAvatarDialogState();
+}
+
+class _EditAvatarDialogState extends State<_EditAvatarDialog> {
+  late String _selectedAvatar;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedAvatar = widget.child.avatarKey;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
+    return AlertDialog(
+      title: Text(l10n.editAvatar),
+      content: SizedBox(
+        width: 400,
+        child: _AvatarPicker(
+          selected: _selectedAvatar,
+          onSelect: (key) => setState(() => _selectedAvatar = key),
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: Text(l10n.cancel),
+        ),
+        FilledButton(
+          onPressed: () {
+            widget.ref
+                .read(childrenProvider.notifier)
+                .updateAvatar(widget.child.id, _selectedAvatar);
+            Navigator.pop(context);
+          },
+          child: Text(l10n.confirm),
+        ),
+      ],
     );
   }
 }
